@@ -30,7 +30,7 @@ clap = { version = "4.5.23", features = [
     "string",
 ] }
 clap_complete = { version = "4.5.38", features = ["unstable-dynamic"] }
-clap_complete_nushell = "4.5.4"
+clap_complete_nushell = { version = "4.5.4", features = ["unstable-dynamic"] }
 clap-markdown = "0.1.4"
 clap_mangen = "0.2.10"
 chrono = { version = "0.4.39", default-features = false, features = [
@@ -149,3 +149,8 @@ similar.opt-level = 3
 [profile.release]
 strip = "debuginfo"
 codegen-units = 1
+
+[patch.crates-io]
+clap = { path = "../clap" }
+clap_complete = { path = "../clap/clap_complete" }
+clap_complete_nushell = { path = "../clap/clap_complete_nushell"}
