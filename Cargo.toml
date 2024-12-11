@@ -35,7 +35,7 @@ assert_cmd = "2.2.2"
 async-trait = "0.1.89"
 blake2 = "0.11.0"
 bstr = { version = "1.12.1", features = ["serde"] }
-clap = { version = "4.6.1", features = [
+clap = { version = "4.6.6", features = [
     "derive",
     "deprecated",
     "wrap_help",
@@ -44,8 +44,8 @@ clap = { version = "4.6.1", features = [
 # Update clap-markdown manually since test_generate_md_cli_help snapshot
 # will need regenerating.
 clap-markdown = "=0.1.5"
-clap_complete = { version = "4.6.5", features = ["unstable-dynamic"] }
-clap_complete_nushell = "4.6.0"
+clap_complete = { version = "4.6.11", features = ["unstable-dynamic"] }
+clap_complete_nushell = { version = "4.6.5", features = ["unstable-dynamic"] }
 clap_mangen = "0.3.0"
 clru = "0.6.3"
 criterion = "0.8.2"
@@ -201,3 +201,8 @@ opt-level = 3
 [profile.release]
 strip = "debuginfo"
 codegen-units = 1
+
+[patch.crates-io]
+clap = { path = "../clap" }
+clap_complete = { path = "../clap/clap_complete" }
+clap_complete_nushell = { path = "../clap/clap_complete_nushell"}

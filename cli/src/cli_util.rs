@@ -39,8 +39,10 @@ use clap::builder::TypedValueParser as _;
 use clap::builder::ValueParserFactory;
 use clap::error::ContextKind;
 use clap::error::ContextValue;
+use clap_complete::env::{Bash, Elvish, Fish, Powershell, Shells, Zsh};
 use futures::StreamExt as _;
 use futures::TryStreamExt as _;
+use clap_complete_nushell::dynamic::Nushell;
 use futures::future::try_join_all;
 use futures::stream;
 use indexmap::IndexMap;
@@ -3987,6 +3989,14 @@ fn handle_shell_completion(
         // for completing aliases
         app.allow_external_subcommands(true)
     })
+    .shells(Shells(&[
+        &Bash,
+        &Elvish,
+        &Fish,
+        &Powershell,
+        &Zsh,
+        &Nushell,
+    ]))
     .try_complete(args.iter(), Some(cwd))?;
     assert!(
         ran_completion,
