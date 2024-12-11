@@ -149,3 +149,8 @@ similar.opt-level = 3
 [profile.release]
 strip = "debuginfo"
 codegen-units = 1
+
+[patch.crates-io]
+clap = { path = "../clap" }
+clap_complete = { path = "../clap/clap_complete" }
+clap_complete_nushell = { path = "../clap/clap_complete_nushell"}

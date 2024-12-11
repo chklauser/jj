@@ -48,6 +48,8 @@ use clap::ArgMatches;
 use clap::Command;
 use clap::FromArgMatches;
 use clap_complete::ArgValueCandidates;
+use clap_complete::env::{Bash, Elvish, Fish, Powershell, Shells, Zsh};
+use clap_complete_nushell::Nushell;
 use indexmap::IndexMap;
 use indexmap::IndexSet;
 use itertools::Itertools;
@@ -3275,6 +3277,7 @@ fn handle_shell_completion(
             // for completing aliases
             .allow_external_subcommands(true)
     })
+    .shells(Shells(&[&Bash, &Elvish, &Fish, &Powershell, &Zsh, &Nushell]))
     .try_complete(args.iter(), Some(cwd))?;
     assert!(
         ran_completion,
